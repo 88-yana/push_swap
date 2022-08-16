@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:01:12 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/08/16 04:05:17 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/08/17 08:22:48 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,27 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 }
 
-void ft_show_list(t_list *lst, t_list *ptr_dummy_node)
+void	ft_show_list(t_list *lst, t_list *nil)
 {
-	lst = lst->next;
-	while (lst != ptr_dummy_node)
+	while (lst != nil)
 	{
 		printf("%ld ", lst->num);
 		lst = lst->next;
 	}
 }
 
-void ft_show_list_rr(t_list *lst, t_list *ptr_dummy_node)
+void	ft_show_list_rr(t_list *lst, t_list *nil)
 {
-	lst = lst->prev;
-	while (lst != ptr_dummy_node)
+	int	cnt;
+
+	cnt = 0;
+	while (cnt != 3)
 	{
-		printf("%ld ", lst->num);
+		if (lst != nil)
+			printf("%ld ", lst->num);
 		lst = lst->prev;
+		if (lst == nil)
+			cnt++;
 	}
 }
 
@@ -101,18 +105,51 @@ void ft_show_list_rr(t_list *lst, t_list *ptr_dummy_node)
 // 	return 0;
 // }
 
+typedef enum enm {
+	sa,
+	sb,
+	ss,
+	pa,
+	pb,
+	ra,
+	rb,
+	rr,
+	rra,
+	rrb,
+	rrr,
+}	t_instruction;
+
+void	execute_ra(t_list *nil)
+{
+	nil->prev->next = nil->next;
+	nil->next = nil->next->next;
+	
+}
+
+void	execute_instr(t_instruction instr, t_list *a, t_list *b)
+{
+	// if (instr == sa)
+	// 	return 
+	if (instr == ra)
+		return execute_ra(a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	node;
-	t_list	*ptr_dummy_node;
+	t_list	*nil;
 
 	node = *ft_lstnew(0);
-	ptr_dummy_node = &node;
+	nil = &node;
 	for (int i = 1; i < argc; i++)
-		ft_lstadd_back(&ptr_dummy_node, ft_lstnew(atoi(argv[i])));
+		ft_lstadd_back(&nil, ft_lstnew(atoi(argv[i])));
 	node.prev = ft_lstlast(&node);
-	ft_lstlast(&node)->next = ptr_dummy_node;
-	ft_show_list(&node, ptr_dummy_node);
-	ft_show_list_rr(&node, ptr_dummy_node);
+	ft_lstlast(&node)->next = nil;
+	ft_show_list(nil->next, nil);
+	ft_show_list_rr(nil->prev, nil);
+	
+	//t_instruction instr;
 	return 0;
 }
+
+//mallocしたら，freeしなきゃいけない
