@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:01:12 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/08/19 16:07:32 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:41:11 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,24 @@ void	ft_show_list_rr(t_list *lst, t_list *nil)
 	}
 }
 
+void	ft_lstclear(t_list **lst, t_list *nil)
+{
+	t_list	*suc;
+
+	if (lst == NULL || *lst == NULL)
+		return ;
+	while (1)
+	{
+		suc = (*lst)->next;
+		free((*lst));
+		if (suc == nil)
+			break ;
+		*lst = suc;
+	}
+	*lst = NULL;
+}
+
+
 // int	main(int argc, char **argv)
 // {
 // 	for (int i = 1; i < argc; i++)
@@ -138,20 +156,16 @@ void	perform_p(t_list *a, t_list *b)
 	t_list *temp;
 
 	temp = a->next;
-	printf("%s, %d\n", __FILE__, __LINE__);
 	printf("a?");
 
 	a->next->next->prev = a;
 	a->next = a->next->next;
 
-	printf("%s, %d\n", __FILE__, __LINE__);
 	temp->next = b->next;
 	temp->prev = b;
-	printf("%s, %d\n", __FILE__, __LINE__);
 	printf("%p\n", b->next);
 	b->next->prev = temp;
 	b->next = temp;
-	printf("%s, %d\n", __FILE__, __LINE__);
 }
 
 void	perform_r(t_list *nil)
@@ -235,7 +249,6 @@ void	perform_task(t_task task, t_list *a, t_list *b)
 {
 	if (task == sa || task == sb || task == ss)
 		perform_swap(task, a, b);
-	printf("%s, %d\n", __FILE__, __LINE__);
 	if (task == pa || task == pb)
 		perform_push(task, a, b);
 	if (task == ra || task == rb || task == rr)
@@ -255,8 +268,8 @@ int	main(int argc, char **argv)
 	b = &node_b;
 	for (int i = 1; i < argc; i++)
 		ft_lstadd_back(&nil, ft_lstnew(atoi(argv[i])));
-	for (int i = 1; i < argc; i++)
-		ft_lstadd_back(&b, ft_lstnew(atoi(argv[i])));
+	// for (int i = 1; i < argc; i++)
+	// 	ft_lstadd_back(&b, ft_lstnew(atoi(argv[i])));
 		
 	node.prev = ft_lstlast(&node);
 	ft_lstlast(&node)->next = nil;
@@ -324,11 +337,8 @@ int	main(int argc, char **argv)
 	printf("\n");
 	printf("%ld\n", nil->num);
 	printf("%ld\n", (*(nil->prev)).num);
-	printf("%s, %d\n", __FILE__, __LINE__);
 	printf("%ld\n", nil->prev->num);
-	printf("%s, %d\n", __FILE__, __LINE__);
 	printf("ha?");
-	printf("%s, %d\n", __FILE__, __LINE__);
 
 	perform_task(sa, nil, nil);
 	printf("show list sa : ");
@@ -339,13 +349,10 @@ int	main(int argc, char **argv)
 	printf("\n");
 	printf("%ld\n", nil->num);
 	printf("%ld\n", (*(nil->prev)).num);
-	printf("%s, %d\n", __FILE__, __LINE__);
 	printf("%ld\n", nil->prev->num);
-	printf("%s, %d\n", __FILE__, __LINE__);
 	printf("ha?");
-	printf("%s, %d\n", __FILE__, __LINE__);
 
-	
+
 	perform_task(pa, nil, b);
 	printf("show list pa : ");
 	ft_show_list(nil->next, nil);
@@ -362,6 +369,11 @@ int	main(int argc, char **argv)
 	printf("show r list b: ");
 	ft_show_list_rr(b->prev, b);
 	printf("\n");
+
+	// ft_lstclear(&nil, nil);
+	// ft_lstclear(&b, b);
+	free(&node);
+	free(&node_b);
 	return 0;
 }
 
