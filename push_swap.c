@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:01:12 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/08/19 11:41:07 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/08/19 16:07:32 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,18 +137,21 @@ void	perform_p(t_list *a, t_list *b)
 {
 	t_list *temp;
 
-	temp = a;
+	temp = a->next;
+	printf("%s, %d\n", __FILE__, __LINE__);
+	printf("a?");
 
-	a->prev->next = a->next;
-	a->prev = a->next->prev;
+	a->next->next->prev = a;
 	a->next = a->next->next;
 
-	temp->next = b;
-	temp->prev = b->prev;
+	printf("%s, %d\n", __FILE__, __LINE__);
 	temp->next = b->next;
-	b->prev->next = temp;
-	b->prev = temp;
-	b = temp;
+	temp->prev = b;
+	printf("%s, %d\n", __FILE__, __LINE__);
+	printf("%p\n", b->next);
+	b->next->prev = temp;
+	b->next = temp;
+	printf("%s, %d\n", __FILE__, __LINE__);
 }
 
 void	perform_r(t_list *nil)
@@ -232,6 +235,7 @@ void	perform_task(t_task task, t_list *a, t_list *b)
 {
 	if (task == sa || task == sb || task == ss)
 		perform_swap(task, a, b);
+	printf("%s, %d\n", __FILE__, __LINE__);
 	if (task == pa || task == pb)
 		perform_push(task, a, b);
 	if (task == ra || task == rb || task == rr)
@@ -251,8 +255,13 @@ int	main(int argc, char **argv)
 	b = &node_b;
 	for (int i = 1; i < argc; i++)
 		ft_lstadd_back(&nil, ft_lstnew(atoi(argv[i])));
+	for (int i = 1; i < argc; i++)
+		ft_lstadd_back(&b, ft_lstnew(atoi(argv[i])));
+		
 	node.prev = ft_lstlast(&node);
 	ft_lstlast(&node)->next = nil;
+	node_b.prev = ft_lstlast(&node_b);
+	ft_lstlast(&node_b)->next = b;
 
 	ft_show_list(nil->next, nil);
 	printf("\n");
@@ -315,8 +324,28 @@ int	main(int argc, char **argv)
 	printf("\n");
 	printf("%ld\n", nil->num);
 	printf("%ld\n", (*(nil->prev)).num);
+	printf("%s, %d\n", __FILE__, __LINE__);
 	printf("%ld\n", nil->prev->num);
+	printf("%s, %d\n", __FILE__, __LINE__);
+	printf("ha?");
+	printf("%s, %d\n", __FILE__, __LINE__);
 
+	perform_task(sa, nil, nil);
+	printf("show list sa : ");
+	ft_show_list(nil->next, nil);
+	printf("\n");
+	printf("show r list : ");
+	ft_show_list_rr(nil->prev, nil);
+	printf("\n");
+	printf("%ld\n", nil->num);
+	printf("%ld\n", (*(nil->prev)).num);
+	printf("%s, %d\n", __FILE__, __LINE__);
+	printf("%ld\n", nil->prev->num);
+	printf("%s, %d\n", __FILE__, __LINE__);
+	printf("ha?");
+	printf("%s, %d\n", __FILE__, __LINE__);
+
+	
 	perform_task(pa, nil, b);
 	printf("show list pa : ");
 	ft_show_list(nil->next, nil);
@@ -327,10 +356,12 @@ int	main(int argc, char **argv)
 	printf("%ld\n", nil->num);
 	printf("%ld\n", (*(nil->prev)).num);
 	printf("%ld\n", nil->prev->num);
-	printf("show list pa : b");
+	printf("show list pa b : ");
 	ft_show_list(b->next, b);
-	printf("show r list : b");
+	printf("\n");
+	printf("show r list b: ");
 	ft_show_list_rr(b->prev, b);
+	printf("\n");
 	return 0;
 }
 
