@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:01:12 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/08/19 10:12:43 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/08/19 11:41:07 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,38 @@ typedef enum enm {
 	rrr,
 }	t_task;
 
+void	perform_s(t_list *nil)
+{
+	t_list *temp;
+	if (nil->next == nil->prev)
+		return ;
+	nil->next->next->next->prev = nil->next;
+	nil->next->next->prev = nil;
+	temp = nil->next->next->next;
+	nil->next->next->next = nil->next;
+	nil->next->prev = nil->next->next;
+	nil->next->next = temp;
+	nil->next = nil->next->prev;
+}
+
+void	perform_p(t_list *a, t_list *b)
+{
+	t_list *temp;
+
+	temp = a;
+
+	a->prev->next = a->next;
+	a->prev = a->next->prev;
+	a->next = a->next->next;
+
+	temp->next = b;
+	temp->prev = b->prev;
+	temp->next = b->next;
+	b->prev->next = temp;
+	b->prev = temp;
+	b = temp;
+}
+
 void	perform_r(t_list *nil)
 {
 	t_list *temp;
@@ -151,23 +183,23 @@ void	perform_rr(t_list *nil)
 
 void	perform_swap(t_task task, t_list *a, t_list *b)
 {
-	// if (task == sa)
-	// 	perform_s(a);
-	// if (task == sb)
-	// 	perform_s(b);
-	// if (task == ss)
-	// {
-	// 	perform_s(a);
-	// 	perform_s(b);
-	// }
+	if (task == sa)
+		perform_s(a);
+	if (task == sb)
+		perform_s(b);
+	if (task == ss)
+	{
+		perform_s(a);
+		perform_s(b);
+	}
 }
 
 void	perform_push(t_task task, t_list *a, t_list *b)
 {
-	// if (task == pa)
-	// 	perform_p(a, b);
-	// if (task == pb)
-	// 	perform_p(b, a);
+	if (task == pa)
+		perform_p(a, b);
+	if (task == pb)
+		perform_p(b, a);
 }
 
 void	perform_rotate(t_task task, t_list *a, t_list *b)
@@ -210,11 +242,13 @@ void	perform_task(t_task task, t_list *a, t_list *b)
 
 int	main(int argc, char **argv)
 {
-	t_list	node;
-	t_list	*nil;
+	t_list	node, node_b;
+	t_list	*nil, *b;
 
 	node = *ft_lstnew(0);
+	node_b = *ft_lstnew(0);
 	nil = &node;
+	b = &node_b;
 	for (int i = 1; i < argc; i++)
 		ft_lstadd_back(&nil, ft_lstnew(atoi(argv[i])));
 	node.prev = ft_lstlast(&node);
@@ -229,7 +263,7 @@ int	main(int argc, char **argv)
 	printf("%ld\n", nil->prev->num);
 
 	perform_task(ra, nil, nil);
-	printf("show list : ");
+	printf("show list ra : ");
 	ft_show_list(nil->next, nil);
 	printf("\n");
 	printf("show r list : ");
@@ -240,7 +274,7 @@ int	main(int argc, char **argv)
 	printf("%ld\n", nil->prev->num);
 
 	perform_task(rra, nil, nil);
-	printf("show list : ");
+	printf("show list rra : ");
 	ft_show_list(nil->next, nil);
 	printf("\n");
 	printf("show r list : ");
@@ -251,7 +285,7 @@ int	main(int argc, char **argv)
 	printf("%ld\n", nil->prev->num);
 
 	perform_task(rra, nil, nil);
-	printf("show list : ");
+	printf("show list rra : ");
 	ft_show_list(nil->next, nil);
 	printf("\n");
 	printf("show r list : ");
@@ -260,6 +294,43 @@ int	main(int argc, char **argv)
 	printf("%ld\n", nil->num);
 	printf("%ld\n", (*(nil->prev)).num);
 	printf("%ld\n", nil->prev->num);
+
+	perform_task(ra, nil, nil);
+	printf("show list ra : ");
+	ft_show_list(nil->next, nil);
+	printf("\n");
+	printf("show r list : ");
+	ft_show_list_rr(nil->prev, nil);
+	printf("\n");
+	printf("%ld\n", nil->num);
+	printf("%ld\n", (*(nil->prev)).num);
+	printf("%ld\n", nil->prev->num);
+
+	perform_task(sa, nil, nil);
+	printf("show list sa : ");
+	ft_show_list(nil->next, nil);
+	printf("\n");
+	printf("show r list : ");
+	ft_show_list_rr(nil->prev, nil);
+	printf("\n");
+	printf("%ld\n", nil->num);
+	printf("%ld\n", (*(nil->prev)).num);
+	printf("%ld\n", nil->prev->num);
+
+	perform_task(pa, nil, b);
+	printf("show list pa : ");
+	ft_show_list(nil->next, nil);
+	printf("\n");
+	printf("show r list : ");
+	ft_show_list_rr(nil->prev, nil);
+	printf("\n");
+	printf("%ld\n", nil->num);
+	printf("%ld\n", (*(nil->prev)).num);
+	printf("%ld\n", nil->prev->num);
+	printf("show list pa : b");
+	ft_show_list(b->next, b);
+	printf("show r list : b");
+	ft_show_list_rr(b->prev, b);
 	return 0;
 }
 
