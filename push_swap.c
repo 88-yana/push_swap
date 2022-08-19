@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:01:12 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/08/19 09:52:54 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/08/19 10:12:43 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ void	perform_r(t_list *nil)
 {
 	t_list *temp;
 
+	if (nil->next == nil->prev)
+		return ;
 	nil->prev->next = nil->next;
 	nil->next->next->prev = nil;
 	nil->next->prev = nil->prev;
@@ -136,6 +138,8 @@ void	perform_rr(t_list *nil)
 {
 	t_list *temp;
 
+	if (nil->next == nil->prev)
+		return ;
 	nil->prev->prev->next = nil;
 	nil->next->prev = nil->prev;
 	temp = nil->prev->prev;
@@ -215,6 +219,7 @@ int	main(int argc, char **argv)
 		ft_lstadd_back(&nil, ft_lstnew(atoi(argv[i])));
 	node.prev = ft_lstlast(&node);
 	ft_lstlast(&node)->next = nil;
+
 	ft_show_list(nil->next, nil);
 	printf("\n");
 	ft_show_list_rr(nil->prev, nil);
@@ -222,7 +227,7 @@ int	main(int argc, char **argv)
 	printf("%ld\n", nil->num);
 	printf("%ld\n", (*(nil->prev)).num);
 	printf("%ld\n", nil->prev->num);
-	//t_task task;
+
 	perform_task(ra, nil, nil);
 	printf("show list : ");
 	ft_show_list(nil->next, nil);
@@ -233,6 +238,7 @@ int	main(int argc, char **argv)
 	printf("%ld\n", nil->num);
 	printf("%ld\n", (*(nil->prev)).num);
 	printf("%ld\n", nil->prev->num);
+
 	perform_task(rra, nil, nil);
 	printf("show list : ");
 	ft_show_list(nil->next, nil);
@@ -243,6 +249,7 @@ int	main(int argc, char **argv)
 	printf("%ld\n", nil->num);
 	printf("%ld\n", (*(nil->prev)).num);
 	printf("%ld\n", nil->prev->num);
+
 	perform_task(rra, nil, nil);
 	printf("show list : ");
 	ft_show_list(nil->next, nil);
