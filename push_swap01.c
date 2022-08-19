@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap01.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:01:12 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/08/20 07:22:54 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/08/20 07:14:06 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_show_list(t_list *lst, t_list *nil)
 	}
 }
 
-void	ft_show_list_r(t_list *lst, t_list *nil)
+void	ft_show_list_rr(t_list *lst, t_list *nil)
 {
 	int	cnt;
 
@@ -95,6 +95,33 @@ void	ft_lstclear(t_list **lst, t_list *nil)
 	}
 	*lst = NULL;
 }
+
+
+// int	main(int argc, char **argv)
+// {
+// 	for (int i = 1; i < argc; i++)
+// 		printf("%d : %s\n", i, argv[i]);
+
+// 	t_list	*lst;
+// 	lst = NULL;
+// 	for (int i = 1; i < argc; i++)
+// 	{
+// 		ft_lstadd_back(&lst, ft_lstnew(atoi(argv[i])));
+// 	}
+// 	lst->prev = NULL;
+// 	ft_show_list(lst);
+// 	t_list	temp;
+// 	temp = *lst;
+// 	for (int i = 1; i < argc; i++)
+// 	{
+// 		printf("%d, %ld\n", i, temp.num);
+// 		temp = *temp.next;
+// 		printf("LINE == %d, FILE == %s\n", __LINE__, __FILE__);
+// 	}
+// 		printf("LINE == %d, FILE == %s\n", __LINE__, __FILE__);
+
+// 	return 0;
+// }
 
 typedef enum enm {
 	sa,
@@ -248,7 +275,7 @@ int	main(int argc, char **argv)
 
 	ft_show_list(a->next, a);
 	printf("\n");
-	ft_show_list_r(a->prev, a);
+	ft_show_list_rr(a->prev, a);
 	printf("\n");
 	printf("%ld\n", a->num);
 	printf("%ld\n", (*(a->prev)).num);
@@ -259,7 +286,7 @@ int	main(int argc, char **argv)
 	ft_show_list(a->next, a);
 	printf("\n");
 	printf("show r list : ");
-	ft_show_list_r(a->prev, a);
+	ft_show_list_rr(a->prev, a);
 	printf("\n");
 	printf("%ld\n", a->num);
 	printf("%ld\n", (*(a->prev)).num);
@@ -270,7 +297,7 @@ int	main(int argc, char **argv)
 	ft_show_list(a->next, a);
 	printf("\n");
 	printf("show r list : ");
-	ft_show_list_r(a->prev, a);
+	ft_show_list_rr(a->prev, a);
 	printf("\n");
 	printf("%ld\n", a->num);
 	printf("%ld\n", (*(a->prev)).num);
@@ -281,7 +308,7 @@ int	main(int argc, char **argv)
 	ft_show_list(a->next, a);
 	printf("\n");
 	printf("show r list : ");
-	ft_show_list_r(a->prev, a);
+	ft_show_list_rr(a->prev, a);
 	printf("\n");
 	printf("%ld\n", a->num);
 	printf("%ld\n", (*(a->prev)).num);
@@ -292,7 +319,7 @@ int	main(int argc, char **argv)
 	ft_show_list(a->next, a);
 	printf("\n");
 	printf("show r list : ");
-	ft_show_list_r(a->prev, a);
+	ft_show_list_rr(a->prev, a);
 	printf("\n");
 	printf("%ld\n", a->num);
 	printf("%ld\n", (*(a->prev)).num);
@@ -303,7 +330,7 @@ int	main(int argc, char **argv)
 	ft_show_list(a->next, a);
 	printf("\n");
 	printf("show r list : ");
-	ft_show_list_r(a->prev, a);
+	ft_show_list_rr(a->prev, a);
 	printf("\n");
 	printf("%ld\n", a->num);
 	printf("%ld\n", (*(a->prev)).num);
@@ -315,7 +342,7 @@ int	main(int argc, char **argv)
 	ft_show_list(a->next, a);
 	printf("\n");
 	printf("show r list : ");
-	ft_show_list_r(a->prev, a);
+	ft_show_list_rr(a->prev, a);
 	printf("\n");
 	printf("%ld\n", a->num);
 	printf("%ld\n", (*(a->prev)).num);
@@ -328,7 +355,7 @@ int	main(int argc, char **argv)
 	ft_show_list(a->next, a);
 	printf("\n");
 	printf("show r list : ");
-	ft_show_list_r(a->prev, a);
+	ft_show_list_rr(a->prev, a);
 	printf("\n");
 	printf("%ld\n", a->num);
 	printf("%ld\n", (*(a->prev)).num);
@@ -337,7 +364,7 @@ int	main(int argc, char **argv)
 	ft_show_list(b->next, b);
 	printf("\n");
 	printf("show r list b: ");
-	ft_show_list_r(b->prev, b);
+	ft_show_list_rr(b->prev, b);
 	printf("\n");
 
 	ft_lstclear(&a, a);
