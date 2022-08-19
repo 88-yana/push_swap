@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:01:12 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/08/17 08:22:48 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/08/19 09:52:54 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,21 +117,91 @@ typedef enum enm {
 	rra,
 	rrb,
 	rrr,
-}	t_instruction;
+}	t_task;
 
-void	execute_ra(t_list *nil)
+void	perform_r(t_list *nil)
 {
+	t_list *temp;
+
 	nil->prev->next = nil->next;
-	nil->next = nil->next->next;
-	
+	nil->next->next->prev = nil;
+	nil->next->prev = nil->prev;
+	temp = nil->next->next;
+	nil->next->next = nil;
+	nil->prev = nil->next;
+	nil->next = temp;
 }
 
-void	execute_instr(t_instruction instr, t_list *a, t_list *b)
+void	perform_rr(t_list *nil)
 {
-	// if (instr == sa)
-	// 	return 
-	if (instr == ra)
-		return execute_ra(a);
+	t_list *temp;
+
+	nil->prev->prev->next = nil;
+	nil->next->prev = nil->prev;
+	temp = nil->prev->prev;
+	nil->prev->prev = nil;
+	nil->prev->next = nil->next;
+	nil->next = nil->prev;
+	nil->prev = temp;
+}
+
+void	perform_swap(t_task task, t_list *a, t_list *b)
+{
+	// if (task == sa)
+	// 	perform_s(a);
+	// if (task == sb)
+	// 	perform_s(b);
+	// if (task == ss)
+	// {
+	// 	perform_s(a);
+	// 	perform_s(b);
+	// }
+}
+
+void	perform_push(t_task task, t_list *a, t_list *b)
+{
+	// if (task == pa)
+	// 	perform_p(a, b);
+	// if (task == pb)
+	// 	perform_p(b, a);
+}
+
+void	perform_rotate(t_task task, t_list *a, t_list *b)
+{
+	if (task == ra)
+		perform_r(a);
+	if (task == rb)
+		perform_r(b);
+	if (task == rr)
+	{
+		perform_r(a);
+		perform_r(b);
+	}
+}
+
+void	perform_reverse_rotate(t_task task, t_list *a, t_list *b)
+{
+	if (task == rra)
+		perform_rr(a);
+	if (task == rrb)
+		perform_rr(b);
+	if (task == rrr)
+	{
+		perform_rr(a);
+		perform_rr(b);
+	}
+}
+
+void	perform_task(t_task task, t_list *a, t_list *b)
+{
+	if (task == sa || task == sb || task == ss)
+		perform_swap(task, a, b);
+	if (task == pa || task == pb)
+		perform_push(task, a, b);
+	if (task == ra || task == rb || task == rr)
+		perform_rotate(task, a, b);
+	if (task == rra || task == rrb || task == rrr)
+		perform_reverse_rotate(task, a, b);
 }
 
 int	main(int argc, char **argv)
@@ -146,9 +216,43 @@ int	main(int argc, char **argv)
 	node.prev = ft_lstlast(&node);
 	ft_lstlast(&node)->next = nil;
 	ft_show_list(nil->next, nil);
+	printf("\n");
 	ft_show_list_rr(nil->prev, nil);
-	
-	//t_instruction instr;
+	printf("\n");
+	printf("%ld\n", nil->num);
+	printf("%ld\n", (*(nil->prev)).num);
+	printf("%ld\n", nil->prev->num);
+	//t_task task;
+	perform_task(ra, nil, nil);
+	printf("show list : ");
+	ft_show_list(nil->next, nil);
+	printf("\n");
+	printf("show r list : ");
+	ft_show_list_rr(nil->prev, nil);
+	printf("\n");
+	printf("%ld\n", nil->num);
+	printf("%ld\n", (*(nil->prev)).num);
+	printf("%ld\n", nil->prev->num);
+	perform_task(rra, nil, nil);
+	printf("show list : ");
+	ft_show_list(nil->next, nil);
+	printf("\n");
+	printf("show r list : ");
+	ft_show_list_rr(nil->prev, nil);
+	printf("\n");
+	printf("%ld\n", nil->num);
+	printf("%ld\n", (*(nil->prev)).num);
+	printf("%ld\n", nil->prev->num);
+	perform_task(rra, nil, nil);
+	printf("show list : ");
+	ft_show_list(nil->next, nil);
+	printf("\n");
+	printf("show r list : ");
+	ft_show_list_rr(nil->prev, nil);
+	printf("\n");
+	printf("%ld\n", nil->num);
+	printf("%ld\n", (*(nil->prev)).num);
+	printf("%ld\n", nil->prev->num);
 	return 0;
 }
 
