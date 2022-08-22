@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 00:01:12 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/08/20 07:22:54 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/08/21 13:29:56 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,12 @@ void	ft_lstclear(t_list **lst, t_list *nil)
 	*lst = NULL;
 }
 
-typedef enum enm {
+typedef struct s_process {
+	int optimal_turn;
+	t_task tasks[20];
+}	t_process;
+
+typedef enum e_num {
 	sa,
 	sb,
 	ss,
@@ -107,7 +112,7 @@ typedef enum enm {
 	rr,
 	rra,
 	rrb,
-	rrr,
+	rrr
 }	t_task;
 
 void	perform_s(t_list *nil)
@@ -230,11 +235,21 @@ void	perform_task(t_task task, t_list *a, t_list *b)
 		perform_reverse_rotate(task, a, b);
 }
 
+void	dfs_6_or_less(t_list *a, t_list *b, t_process *process, int turn)
+{
+	t_task task;
+
+	if (turn >= process->optimal_turn)
+		return ;
+	if ()
+	
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*a, *b;
 
-	a = ft_lstnew(0);
+	a = ft_lstnew(argc - 1);
 	b = ft_lstnew(0);
 	for (int i = 1; i < argc; i++)
 		ft_lstadd_back(&a, ft_lstnew(atoi(argv[i])));

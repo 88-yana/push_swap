@@ -8,10 +8,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	cc $(OBJS) -o $(NAME)
-bonus:
-	make WITH_BONUS=1
 clean:
-	$(RM) $(OBJS) $(LIST:%.c=%.o)
+	$(RM) $(OBJS)
 fclean: clean
 	$(RM) $(NAME)
 re: fclean all
