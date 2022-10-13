@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 22:45:30 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 21:57:38 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/13 23:16:04 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 int	main(int argc, char **argv)
 {
 	t_vars	vars;
+	t_lst	*a;
+	t_lst	*b;
 
+	a = NULL;
+	b = NULL;
 	check_arg(argc, argv);
 	make_array(&vars, argc, argv);
 	check_duplicate(&vars);
 	check_sorted(&vars);
 	shrink_array(&vars);
-	sort(&vars);
+	make_list(&vars, a, b);
+	// sort(&vars);
 	return (0);
 }

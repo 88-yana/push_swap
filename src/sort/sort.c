@@ -6,13 +6,13 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:58:29 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 22:04:12 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/13 22:38:11 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/sort.h"
+// #include "../../include/sort.h"
 
-void	sort(t_vars *vars)
-{
+// void	sort(t_vars *vars)
+// {
 	
-}
+// }
