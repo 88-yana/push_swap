@@ -6,17 +6,21 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 22:45:30 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/11 23:33:21 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:57:38 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/main.h"
-#include "../../libft/libft.h"
-#include "../../libft/ft_printf/ft_printf.h"
-#include<stdio.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	ft_printf("%d\n", 1234678);
+	t_vars	vars;
+
+	check_arg(argc, argv);
+	make_array(&vars, argc, argv);
+	check_duplicate(&vars);
+	check_sorted(&vars);
+	shrink_array(&vars);
+	sort(&vars);
 	return (0);
 }

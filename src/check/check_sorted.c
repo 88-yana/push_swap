@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.h                                            :+:      :+:    :+:   */
+/*   check_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 21:20:42 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 21:53:31 by hyanagim         ###   ########.fr       */
+/*   Created: 2022/10/11 22:45:30 by hyanagim          #+#    #+#             */
+/*   Updated: 2022/10/13 21:54:37 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECK_H
-# define CHECK_H
+#include "../../include/check.h"
 
-# include <stdbool.h>
-# include <stddef.h>
-# include <limits.h>
-# include "../libft/libft.h"
-# include "../libft/ft_printf/ft_printf.h"
-# include "struct.h"
+void	check_sorted(t_vars *vars)
+{
+	int	i;
 
-void	print_error(char *message);
-void	check_arg(int argc, char **argv);
-void	check_duplicate(t_vars *vars);
-void	check_sorted(t_vars *vars);
-#endif
+	i = 0;
+	while (i < vars->size - 1)
+	{
+		if (vars->elements[i] > vars->elements[i + 1])
+			return ;
+		i++;
+	}
+	// system("leaks -q push_swap");
+	exit (0);
+}

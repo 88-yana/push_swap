@@ -6,15 +6,13 @@ NAME = push_swap
 
 all: $(NAME)
 
-test:
-	@bash test.sh
 
 $(NAME): $(OBJS)
 	$(MAKE) -C libft/
-	$(CC) $(CFLAGS) $(RLFLAGS) $(OBJS) libft/libft.a -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(RLFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	$(RM) $(OBJS)
