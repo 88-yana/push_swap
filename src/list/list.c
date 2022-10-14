@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:21:01 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 16:18:08 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:37:31 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,38 +75,40 @@ void	show_list_r(t_lst *lst)
 	ft_printf("\n");
 }
 
-int	lstlen(t_lst *lst)
-{
-	int		size;
-	t_lst	*nil;
+// int	lstlen(t_lst *lst)
+// {
+// 	int		size;
+// 	t_lst	*nil;
 
-	size = 0;
-	nil = lst;
-	lst = lst->next;
-	while (lst != nil)
-	{
-		lst = lst->next;
-		size++;
-	}
-}
+// 	size = 0;
+// 	nil = lst;
+// 	lst = lst->next;
+// 	while (lst != nil)
+// 	{
+// 		ft_printf("a\n", lst->num);
+// 		lst = lst->next;
+// 		size++;
+// 	}
+// 	return (size);
+// }
 
-void	lstclear(t_lst **lst, t_lst *nil)
-{
-	t_lst	*temp;
+// void	lstclear(t_lst **lst, t_lst *nil)
+// {
+// 	t_lst	*temp;
 
-	if (lst == NULL || *lst == NULL)
-		return ;
-	while (1)
-	{
-		temp = (*lst)->next;
-		free((*lst));
-		ft_printf("1 : %d\n", 1);
-		*lst = temp;
-		if (temp == nil)
-			break ;
-	}
-	*lst = NULL;
-}
+// 	if (lst == NULL || *lst == NULL)
+// 		return ;
+// 	while (1)
+// 	{
+// 		temp = (*lst)->next;
+// 		free((*lst));
+// 		ft_printf("1 : %d\n", 1);
+// 		*lst = temp;
+// 		if (temp == nil)
+// 			break ;
+// 	}
+// 	*lst = NULL;
+// }
 
 //下のものから都合に合わせて，上に変えた検証はしていない
 // void	lstclear(t_lst **lst, t_lst *nil)

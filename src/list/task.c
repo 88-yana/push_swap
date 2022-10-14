@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:30:08 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 13:37:28 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:33:40 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	perform_p(t_lst *a, t_lst *b)
 {
 	t_lst	*temp;
 
-	if (a->next == a->prev)
-		return ;
 	temp = a->next;
 	a->next->next->prev = a;
 	a->next = a->next->next;
@@ -41,6 +39,21 @@ void	perform_p(t_lst *a, t_lst *b)
 	b->next->prev = temp;
 	b->next = temp;
 }
+
+// void	perform_p(t_lst *a, t_lst *b)
+// {
+// 	t_lst	*temp;
+
+// 	if (a->next == a->prev) //検討せずに消した。全部移すため。
+// 		return ;
+// 	temp = a->next;
+// 	a->next->next->prev = a;
+// 	a->next = a->next->next;
+// 	temp->next = b->next;
+// 	temp->prev = b;
+// 	b->next->prev = temp;
+// 	b->next = temp;
+// }
 
 void	perform_r(t_lst *nil)
 {

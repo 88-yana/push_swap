@@ -1,22 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   greedy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 21:59:03 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 16:52:37 by hyanagim         ###   ########.fr       */
+/*   Created: 2022/10/14 18:26:15 by hyanagim          #+#    #+#             */
+/*   Updated: 2022/10/14 18:26:15 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
-
-# include "../libft/libft.h"
-# include "../libft/ft_printf/ft_printf.h"
-# include "./struct.h"
-# include "./list.h"
-
-void	sort(t_stack *stack, t_vars *vars);
-#endif

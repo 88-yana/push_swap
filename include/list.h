@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:23:22 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 16:18:21 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:37:54 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	perform_task(t_task task, t_lst *a, t_lst *b);
 t_lst	*lstnew(int num);
 t_lst	*lstlast(t_lst *lst);
 void	lstadd_back(t_lst **lst, t_lst *new);
-void	show_list_r(t_lst *lst);
-void	lstclear(t_lst **lst, t_lst *nil);
 t_stack	*make_list(t_vars *vars);
 void	show_list(t_lst *lst);
-int	lstlen(t_lst *lst);
+void	show_list_r(t_lst *lst);
+// int		lstlen(t_lst *lst);
+// void	lstclear(t_lst **lst, t_lst *nil);
 #endif
