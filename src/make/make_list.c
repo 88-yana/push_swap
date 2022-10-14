@@ -6,45 +6,40 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:43:35 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 23:38:46 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:58:46 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/list.h"
 
-void	make_list(t_vars *vars, t_lst *a, t_lst *b)
+static void	make_ring(t_lst *lst)
+{
+	(*lst).prev = lstlast(lst);
+	lstlast(lst)->next = lst;
+}
+
+t_stack	*make_list(t_vars *vars)
 {
 	int		i;
+	t_stack	*stack;
 	t_lst	*temp;
 
-	ft_printf("make_list: %d\n", vars->size);
-	a = lstnew(0);
-	b = lstnew(0);
-	if (a == NULL || b == NULL)
-	{
-		print_error("malloc failed");
-		// system("leaks -q push_swap");
-		exit (1);
-	}
+	stack = malloc(sizeof(t_stack));
+	stack->a = lstnew(0);
+	stack->b = lstnew(0);
+	if (stack == NULL || stack->a == NULL || stack->b == NULL)
+		malloc_error();
 	i = 0;
 	while (i < vars->size)
 	{
 		temp = lstnew(vars->elements[i]);
-		if (i == 3)
-			temp = NULL;
 		if (temp == NULL)
-		{
-			lstclear(&a, NULL);
-			free(vars->elements);
-			print_error("malloc failed");
-			system("leaks -q push_swap");
-			exit (1);
-		}
-		lstadd_back(&a, temp);
+			malloc_error();
+		lstadd_back(&(stack->a), temp);
 		i++;
 	}
-	(*a).prev = lstlast(a);
-	lstlast(a)->next = a;
-	(*b).prev = lstlast(b);
-	lstlast(b)->next = b;
+	make_ring(stack->a);
+	make_ring(stack->b);
+	free(vars->elements);
+	return (stack);
 }

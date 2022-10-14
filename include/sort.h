@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:59:03 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 21:59:57 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:57:55 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
-# include "struct.h"
+# include "./struct.h"
+# include "./list.h"
 
+void	sort(t_stack *stack);
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 22:45:30 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 21:54:37 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:19:26 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ void	check_sorted(t_vars *vars)
 	}
 	// system("leaks -q push_swap");
 	exit (0);
+}
+
+bool	is_sorted(t_lst *lst)
+{
+	
 }

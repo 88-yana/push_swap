@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:21:01 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 23:35:53 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:18:08 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,46 @@ void	lstadd_back(t_lst **lst, t_lst *new)
 	}
 }
 
-
-
-void	show_list_r(t_lst *lst, t_lst *nil)
+void	show_list(t_lst *lst)
 {
-	int	cnt;
+	t_lst	*nil;
 
-	cnt = 0;
-	while (cnt != 3)
+	nil = lst;
+	lst = lst->next;
+	while (lst != nil)
 	{
-		if (lst != nil)
-			ft_printf("%d ", lst->num);
-		lst = lst->prev;
-		if (lst == nil)
-			cnt++;
+		ft_printf("%d ", lst->num);
+		lst = lst->next;
+	}
+	ft_printf("\n");
+}
+
+void	show_list_r(t_lst *lst)
+{
+	t_lst	*nil;
+
+	nil = lst;
+	lst = lst->prev;
+	while (lst != nil)
+	{
+		ft_printf("%d ", lst->num);
+			lst = lst->prev;
+	}
+	ft_printf("\n");
+}
+
+int	lstlen(t_lst *lst)
+{
+	int		size;
+	t_lst	*nil;
+
+	size = 0;
+	nil = lst;
+	lst = lst->next;
+	while (lst != nil)
+	{
+		lst = lst->next;
+		size++;
 	}
 }
 
