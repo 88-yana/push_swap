@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:43:35 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 15:58:46 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/20 21:13:28 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static void	make_ring(t_lst *lst)
 
 t_stack	*make_list(t_vars *vars)
 {
-	int		i;
-	t_stack	*stack;
-	t_lst	*temp;
+	long long	i;
+	t_stack		*stack;
+	t_lst		*temp;
 
 	stack = malloc(sizeof(t_stack));
 	stack->a = lstnew(0);

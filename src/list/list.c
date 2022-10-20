@@ -6,13 +6,13 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:21:01 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 17:37:31 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/20 23:18:15 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/list.h"
 
-t_lst	*lstnew(int num)
+t_lst	*lstnew(long long num)
 {
 	t_lst	*new;
 
@@ -47,50 +47,49 @@ void	lstadd_back(t_lst **lst, t_lst *new)
 	}
 }
 
-void	show_list(t_lst *lst)
-{
-	t_lst	*nil;
-
-	nil = lst;
-	lst = lst->next;
-	while (lst != nil)
-	{
-		ft_printf("%d ", lst->num);
-		lst = lst->next;
-	}
-	ft_printf("\n");
-}
-
-void	show_list_r(t_lst *lst)
-{
-	t_lst	*nil;
-
-	nil = lst;
-	lst = lst->prev;
-	while (lst != nil)
-	{
-		ft_printf("%d ", lst->num);
-			lst = lst->prev;
-	}
-	ft_printf("\n");
-}
-
-// int	lstlen(t_lst *lst)
+// void	show_list(t_lst *lst)
 // {
-// 	int		size;
 // 	t_lst	*nil;
 
-// 	size = 0;
 // 	nil = lst;
 // 	lst = lst->next;
 // 	while (lst != nil)
 // 	{
-// 		ft_printf("a\n", lst->num);
+// 		ft_printf("%d ", lst->num);
 // 		lst = lst->next;
-// 		size++;
 // 	}
-// 	return (size);
+// 	ft_printf("\n");
 // }
+
+// void	show_list_r(t_lst *lst)
+// {
+// 	t_lst	*nil;
+
+// 	nil = lst;
+// 	lst = lst->prev;
+// 	while (lst != nil)
+// 	{
+// 		ft_printf("%d ", lst->num);
+// 			lst = lst->prev;
+// 	}
+// 	ft_printf("\n");
+// }
+
+int	lstlen(t_lst *lst)
+{
+	int		size;
+	t_lst	*nil;
+
+	size = 0;
+	nil = lst;
+	lst = lst->next;
+	while (lst != nil)
+	{
+		lst = lst->next;
+		size++;
+	}
+	return (size);
+}
 
 // void	lstclear(t_lst **lst, t_lst *nil)
 // {
@@ -126,4 +125,52 @@ void	show_list_r(t_lst *lst)
 // 		*lst = suc;
 // 	}
 // 	*lst = NULL;
+// }
+
+
+// #include "../../include/main.h"
+// #include <stdio.h>
+
+// static void	make_ring(t_lst *lst)
+// {
+// 	(*lst).prev = lstlast(lst);
+// 	lstlast(lst)->next = lst;
+// }
+
+// int	main(void)
+// {
+// 	t_lst	*lst;
+// 	t_lst	*temp;
+// 	int		i;
+
+// 	lst = lstnew(0);
+// 	i = 0;
+// 	while (i < 5)
+// 	{
+// 		// if (i == 0)
+// 		// 	temp = lstnew(1);
+// 		// if (i == 1)
+// 		// 	temp = lstnew(2);
+// 		// if (i == 2)
+// 		// 	temp = lstnew(3);
+// 		// if (i == 3)
+// 		// 	temp = lstnew(5);
+// 		// if (i == 4)
+// 		// 	temp = lstnew(4);
+// 		if (i == 0)
+// 			temp = lstnew(0);
+// 		if (i == 1)
+// 			temp = lstnew(5);
+// 		if (i == 2)
+// 			temp = lstnew(3);
+// 		if (i == 3)
+// 			temp = lstnew(4);
+// 		if (i == 4)
+// 			temp = lstnew(2);
+// 		lstadd_back(&lst, temp);
+// 		i++;
+// 	}
+// 	make_ring(lst);
+// 	printf("%d\n", lstlen(lst));
+// 	return (0);
 // }

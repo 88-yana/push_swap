@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:19:11 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 18:14:50 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/20 21:11:39 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static bool	is_number(char *str)
 static bool	is_int(char *str)
 {
 	long long	ans;
-	int			sign;
+	long long	sign;
 
 	if (str == NULL)
 		return (false);
@@ -61,9 +61,9 @@ static bool	is_int(char *str)
 	return (true);
 }
 
-void	check_arg(int argc, char **argv)
+void	check_arg(long long argc, char **argv)
 {
-	int	i;
+	long long	i;
 
 	if (argc == 1)
 		exit (1);

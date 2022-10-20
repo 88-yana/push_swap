@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:58:29 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 18:19:46 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/20 22:46:25 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ static void	move_all_btoa(t_lst *a, t_lst *b)
 		}
 	}
 }
-
 
 static int	cnt_digit(int max)
 {

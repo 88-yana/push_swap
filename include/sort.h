@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:59:03 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 16:52:37 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/20 22:51:11 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@
 # include "./list.h"
 
 void	sort(t_stack *stack, t_vars *vars);
+void	simple_sort(t_stack *stack, t_vars *vars);
 #endif
