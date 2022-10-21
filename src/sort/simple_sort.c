@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:26:15 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 23:38:57 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/21 23:10:10 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,31 @@ static t_task	reverse_task(t_task task)
 		return (task);
 }
 
+static void	print_task(t_task task)
+{
+	if (task == pa)
+		ft_printf("pa\n");
+	else if (task == pb)
+		ft_printf("pb\n");
+	else if (task == ra)
+		ft_printf("ra\n");
+	else if (task == rra)
+		ft_printf("rra\n");
+	else if (task == rb)
+		ft_printf("rb\n");
+	else if (task == rrb)
+		ft_printf("rrb\n");
+	else if (task == rr)
+		ft_printf("rr\n");
+	else if (task == rrr)
+		ft_printf("rrr\n");
+	else if (task == sa)
+		ft_printf("sa\n");
+	else if (task == sb)
+		ft_printf("sb\n");
+	else if (task == ss)
+		ft_printf("ss\n");
+}
 // static bool	is_shortcut(t_task prev_task, t_task task)
 // {
 // 	if (prev_task == reverse_task(task))
@@ -65,15 +90,13 @@ static void	greedy(t_stack *stack, t_vars *vars, t_task prev_task, int turn)
 {
 	t_task	task;
 
-	ft_printf("turn is %d\n", turn);
+	// ft_printf("turn is %d\n", turn);
 	if (turn >= vars->max_turn)
 		return ;
 	// if (turn == 2)
 	// 	return ;
 	if (lstlen(stack->a) == vars->size && is_sorted(stack->a))
-	{
 		update_operations(vars, turn);
-	}
 	task = null;
 	while (++task <= rrr)
 	{
@@ -84,7 +107,7 @@ static void	greedy(t_stack *stack, t_vars *vars, t_task prev_task, int turn)
 		vars->task_sub[turn] = task;
 		greedy(stack, vars, task, turn + 1);
 		perform_task(reverse_task(task), stack->a, stack->b);
-		task++;
+		// task++;
 	}
 }
 
@@ -97,8 +120,7 @@ void	simple_sort(t_stack *stack, t_vars *vars)
 	i = 0;
 	while (vars->task[i] != null)
 	{
-		if (vars->task[i] == pa)
-			ft_printf("pa");
+		print_task(vars->task[i]);
 		i++;
 	}
 	exit (0);
