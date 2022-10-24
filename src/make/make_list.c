@@ -17,7 +17,6 @@ void	make_list(t_vars *vars, t_lst *a, t_lst *b)
 	int		i;
 	t_lst	*temp;
 
-	ft_printf("make_list: %d\n", vars->size);
 	a = lstnew(0);
 	b = lstnew(0);
 	if (a == NULL || b == NULL)
@@ -30,8 +29,8 @@ void	make_list(t_vars *vars, t_lst *a, t_lst *b)
 	while (i < vars->size)
 	{
 		temp = lstnew(vars->elements[i]);
-		if (i == 3)
-			temp = NULL;
+		// if (i == 1)
+			// temp = NULL;
 		if (temp == NULL)
 		{
 			lstclear(&a, NULL);
@@ -47,4 +46,5 @@ void	make_list(t_vars *vars, t_lst *a, t_lst *b)
 	lstlast(a)->next = a;
 	(*b).prev = lstlast(b);
 	lstlast(b)->next = b;
+	show_list_r(a->prev, a);
 }

@@ -51,16 +51,10 @@ void	lstadd_back(t_lst **lst, t_lst *new)
 
 void	show_list_r(t_lst *lst, t_lst *nil)
 {
-	int	cnt;
-
-	cnt = 0;
-	while (cnt != 3)
+	while (lst != nil)
 	{
-		if (lst != nil)
-			ft_printf("%d ", lst->num);
+		ft_printf("%d ", lst->num);
 		lst = lst->prev;
-		if (lst == nil)
-			cnt++;
 	}
 }
 
