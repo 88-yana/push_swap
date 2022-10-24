@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:43:35 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 21:13:28 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/24 21:12:16 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_stack	*make_list(t_vars *vars)
 	t_lst		*temp;
 
 	stack = malloc(sizeof(t_stack));
-	stack->a = lstnew(0);
-	stack->b = lstnew(0);
+	stack->a = lstnew(-1);
+	stack->b = lstnew(-1);
 	if (stack == NULL || stack->a == NULL || stack->b == NULL)
 		malloc_error();
 	i = 0;
