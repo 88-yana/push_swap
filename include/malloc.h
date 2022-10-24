@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:02:02 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 20:06:34 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/20 21:10:28 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@
 # include <stdlib.h>
 # include "check.h"
 
-void	make_array(t_vars *vars, int argc, char **argv);
+void	make_array(t_vars *vars, long long argc, char **argv);
 #endif

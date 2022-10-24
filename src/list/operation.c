@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   task00.c                                           :+:      :+:    :+:   */
+/*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:21:56 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/13 22:40:30 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/21 23:11:27 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static void	perform_swap(t_task task, t_lst *a, t_lst *b)
 static void	perform_push(t_task task, t_lst *a, t_lst *b)
 {
 	if (task == pa)
-		perform_p(a, b);
-	if (task == pb)
 		perform_p(b, a);
+	if (task == pb)
+		perform_p(a, b);
 }
 
 static void	perform_rotate(t_task task, t_lst *a, t_lst *b)
@@ -61,6 +61,14 @@ static void	perform_reverse_rotate(t_task task, t_lst *a, t_lst *b)
 
 void	perform_task(t_task task, t_lst *a, t_lst *b)
 {
+	// if (task == pa)
+	// 	ft_printf("pa\n");
+	// if (task == pb)
+	// 	ft_printf("pb\n");
+	// if (task == ra)
+	// 	ft_printf("ra\n");
+	// if (task == rb)
+	// 	ft_printf("rb\n");
 	if (task == sa || task == sb || task == ss)
 		perform_swap(task, a, b);
 	if (task == pa || task == pb)
