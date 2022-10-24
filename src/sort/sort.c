@@ -33,7 +33,7 @@ static void	move_atob(t_lst *a, t_lst *b, int index)
 		}
 	}
 }
-
+//aを++して，どうなるか見る。
 static void	move_btoa(t_lst *a, t_lst *b, int index)
 {
 	t_lst	*last;

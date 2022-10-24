@@ -61,14 +61,14 @@ static void	perform_reverse_rotate(t_task task, t_lst *a, t_lst *b)
 
 void	perform_task(t_task task, t_lst *a, t_lst *b)
 {
-	// if (task == pa)
-	// 	ft_printf("pa\n");
-	// if (task == pb)
-	// 	ft_printf("pb\n");
-	// if (task == ra)
-	// 	ft_printf("ra\n");
-	// if (task == rb)
-	// 	ft_printf("rb\n");
+	if (task == pa)
+		ft_printf("pa\n");
+	if (task == pb)
+		ft_printf("pb\n");
+	if (task == ra)
+		ft_printf("ra\n");
+	if (task == rb)
+		ft_printf("rb\n");
 	if (task == sa || task == sb || task == ss)
 		perform_swap(task, a, b);
 	if (task == pa || task == pb)
