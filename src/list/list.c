@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:21:01 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 23:18:15 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/24 23:09:26 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,91 @@ void	lstadd_back(t_lst **lst, t_lst *new)
 	}
 }
 
-// void	show_list(t_lst *lst)
+// void	ft_putchar(char c)
 // {
-// 	t_lst	*nil;
-
-// 	nil = lst;
-// 	lst = lst->next;
-// 	while (lst != nil)
-// 	{
-// 		ft_printf("%d ", lst->num);
-// 		lst = lst->next;
-// 	}
-// 	ft_printf("\n");
+// 	write(1, &c, 1);
 // }
+int		is_base(char *base);
+void	reput(int nbr, char *base, int size);
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int	i;
+
+	if (!is_base(base))
+		return ;
+	i = 0;
+	while (base[i] != '\0')
+	{
+		i++;
+	}
+	if (nbr == -2147483648)
+	{
+		nbr += i;
+		nbr *= -1;
+		ft_putchar('-');
+		reput(nbr / i + 1, base, i);
+		ft_putchar(base[nbr % i]);
+	}
+	else if (nbr < 0)
+	{
+		nbr *= -1;
+		ft_putchar('-');
+		reput(nbr, base, i);
+	}
+	else
+		reput(nbr, base, i);
+}
+
+void	reput(int nbr, char *base, int size)
+{
+	int	x;
+
+	if (nbr >= size)
+		reput(nbr / size, base, size);
+	x = nbr % size;
+	ft_putchar(base[x]);
+}
+
+int	is_base(char *base)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (base[i] != '\0')
+	{
+		j = i + 1;
+		while (base[j] != '\0')
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		if (base[i] == '-' || base[i] == '+')
+			return (0);
+		i++;
+	}
+	if (i < 2)
+		return (0);
+	return (1);
+}
+
+void	show_list(t_lst *lst)
+{
+	t_lst	*nil;
+
+	nil = lst;
+	lst = lst->next;
+	while (lst != nil)
+	{
+		ft_putnbr_base(lst->num, "01");
+		ft_putchar(' ');
+		lst = lst->next;
+	}
+	ft_printf("\n");
+}
 
 // void	show_list_r(t_lst *lst)
 // {
