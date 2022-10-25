@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 22:45:30 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/24 23:48:17 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 18:51:03 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	// if (vars.size < 6)
 	// 	simple_sort(stack, &vars);
 	sort(stack, &vars);
-	show_list(stack->a);
+	// show_list(stack->a);
 	// show_list_r(stack->a);
 	// greedy(stack);
 	// show_list(stack->a);
