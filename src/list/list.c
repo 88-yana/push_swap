@@ -6,13 +6,13 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:21:01 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/24 23:09:26 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:01:48 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/list.h"
 
-t_lst	*lstnew(long long num)
+t_lst	*lstnew(int num)
 {
 	t_lst	*new;
 

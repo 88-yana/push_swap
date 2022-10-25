@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 22:45:30 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 23:16:51 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:01:36 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_sorted(t_vars *vars)
 {
-	long long	i;
+	int	i;
 
 	i = 0;
 	while (i < vars->size - 1)

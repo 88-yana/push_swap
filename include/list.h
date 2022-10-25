@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:23:22 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 22:52:09 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:27:56 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,15 @@
 # include "struct.h"
 # include "check.h"
 
+# define ATOB 0
+# define BTOA 1
+# define NOWRITE 2
+
 void	perform_s(t_lst *nil);
 void	perform_p(t_lst *a, t_lst *b);
 void	perform_r(t_lst *nil);
 void	perform_rr(t_lst *nil);
-void	perform_task(t_task task, t_lst *a, t_lst *b);
+void	perform_task(t_task task, t_lst *a, t_lst *b, int type);
 t_lst	*lstnew(long long num);
 t_lst	*lstlast(t_lst *lst);
 void	lstadd_back(t_lst **lst, t_lst *new);

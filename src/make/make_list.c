@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:43:35 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/24 21:12:16 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:02:16 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	make_ring(t_lst *lst)
 
 t_stack	*make_list(t_vars *vars)
 {
-	long long	i;
+	int	i;
 	t_stack		*stack;
 	t_lst		*temp;
 

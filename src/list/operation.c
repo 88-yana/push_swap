@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:21:56 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/24 23:30:46 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:29:04 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,9 @@ static void	perform_reverse_rotate(t_task task, t_lst *a, t_lst *b)
 	}
 }
 
-void	perform_task(t_task task, t_lst *a, t_lst *b)
+void	perform_task(t_task task, t_lst *a, t_lst *b, int type)
 {
-	if (task == pa)
-		ft_printf("pa\n");
-	if (task == pb)
-		ft_printf("pb\n");
-	if (task == ra)
-		ft_printf("ra\n");
-	if (task == rb)
-		ft_printf("rb\n");
+	write_operation(task, type);
 	if (task == sa || task == sb || task == ss)
 		perform_swap(task, a, b);
 	if (task == pa || task == pb)
