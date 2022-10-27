@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:44:46 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/25 20:54:06 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/27 19:55:04 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,13 @@ void	move_cross(t_stack *stack, int quaternary[2], int index, int type)
 	t_lst	*main;
 	t_lst	*sub;
 	t_lst	*last;
+	t_lst	*first;
+	t_lst	*before;
 	bool	is_escape;
 
 	main = set_lst(stack, stack->a, type);
 	sub = set_lst(stack, stack->b, type);
+	first = main->next;
 	last = main->prev;
 	is_escape = false;
 	while (1)
@@ -86,8 +89,16 @@ void	move_cross(t_stack *stack, int quaternary[2], int index, int type)
 			perform_task(pb, main, sub, type);
 		else if (is_correspond(main->next->num, quaternary[1], index))
 		{
+			before = main->next;
 			perform_task(pb, main, sub, type);
-			perform_task(rb, main, sub, type);
+			if (!is_correspond(main->next->num, quaternary[0], index) && !is_correspond(main->next->num, quaternary[1], index) && main->next != first && last != before)
+			{
+				if (main->next == last)
+					is_escape = true;
+					perform_task(rr, main, sub, type);
+			}
+			else
+				perform_task(rb, main, sub, type);
 		}
 		else
 			perform_task(ra, main, sub, type);
@@ -141,6 +152,12 @@ void	move_all(t_stack *stack, int type)
 	}
 }
 
+// 6 12 15 14 10 1 4 16 13 8 2 3 9 11 5 7
+// 10 3 14 13 11 9 7 12 16 6 4 8 1 15 2 5
+
+//3 2 1 4
+//2 3 1 4
+
 void	sort(t_stack *stack, t_vars *vars)
 {
 	int	index;
@@ -187,27 +204,31 @@ void	sort(t_stack *stack, t_vars *vars)
 	index += 2;
 	transfer_elements(stack, 00, index, ATOB);
 	transfer_elements(stack, 01, index, BTOA);
+
+
+	
 	// index += 2;
 	// leave_elements(stack, 11, index, ATOB);
-	// // print_stack(stack);
+	// print_stack(stack);
 	// quaternary[0] = 11;
 	// quaternary[1] = 01;
 	// move_cross(stack, quaternary, index, BTOA);
-	// // print_stack(stack);
+	// print_stack(stack);
 	// transfer_elements(stack, 10, index, BTOA);
-	// // print_stack(stack);
+	// print_stack(stack);
 	// move_cross_back(stack, 01, index, ATOB);
 	// index += 2;
 	// leave_elements(stack, 11, index, ATOB);
-	// // print_stack(stack);
+	// print_stack(stack);
 	// quaternary[0] = 11;
 	// quaternary[1] = 01;
 	// move_cross(stack, quaternary, index, BTOA);
-	// // print_stack(stack);
+	// print_stack(stack);
 	// transfer_elements(stack, 10, index, BTOA);
-	// // print_stack(stack);
+	// print_stack(stack);
 	// move_cross_back(stack, 01, index, ATOB);
 	move_all(stack, BTOA);
+	// print_stack(stack);
 	// leave_elements(stack, 11, index, ATOB);
 	// print_stack(stack);
 	// ft_printf("stack a : ");
@@ -216,3 +237,35 @@ void	sort(t_stack *stack, t_vars *vars)
 	// show_list(stack->b);
 	(void) vars;
 }
+
+
+
+
+/*
+		2
+		1
+		0
+		3
+
+ra				ra
+pb				pb
+pb				pb
+rr				rb
+ra				ra
+ra				pb
+pb				ra
+ra				pb
+pb				rb
+rb				rb
+rb				rb
+rb				rb
+rb				rb
+rb				rb
+rb				rb
+rb				rb
+rb				pa
+pa				pa
+pa				pa
+pa				pa
+pa				
+*/
