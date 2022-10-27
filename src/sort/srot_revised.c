@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:44:46 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/27 19:55:04 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/27 21:41:16 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void	move_all(t_stack *stack, int type)
 //3 2 1 4
 //2 3 1 4
 
-void	sort(t_stack *stack, t_vars *vars)
+void	first_divide_into_four(t_stack *stack)
 {
 	int	index;
 	int	quaternary[2];
@@ -170,6 +170,49 @@ void	sort(t_stack *stack, t_vars *vars)
 	// print_stack(stack);
 	transfer_elements(stack, 10, index, ATOB);
 	// print_stack(stack);
+}
+
+int	cnt_sort(t_vars *vars)
+{
+	int	cnt;
+	int	size;
+
+	size = vars->size;
+	size /= 2;
+	cnt = 0;
+	while (size > 0)
+	{
+		size /= 2;
+		cnt++;
+	}
+	return (cnt);
+}
+
+int	power(int cnt_of_sort)
+{
+	int	ret;
+
+	ret = 1;
+	while (cnt_of_sort > 0)
+	{
+		ret *= 2;
+		cnt_of_sort--;
+	}
+	return (ret);
+}
+
+void	sort(t_stack *stack, t_vars *vars)
+{
+	int	index;
+	int	quaternary[2];
+	int	cnt_of_sort;
+	
+	index = 0;
+	// cnt_of_sort = cnt_sort(vars);
+	// printf("cnt_of_sort %d\n", cnt_of_sort);
+	// printf("max size %d\n", power(cnt_of_sort));
+	// printf("amari %d\n", vars->size % power(cnt_of_sort));
+	first_divide_into_four(stack);
 	index += 2;
 	leave_elements(stack, 11, index, ATOB);
 	// print_stack(stack);
