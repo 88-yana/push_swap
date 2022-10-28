@@ -1,8 +1,8 @@
-CC = gcc
+CC = cc
 # CC = cc
 CFLAGS = -g
 # CFLAGS = -Wall -Wextra -Werror
-SRCS = $(shell find . -type f -mindepth 2 -name *.c)
+SRCS = $(shell find . -type f -mindepth 1 -name *.c)
 OBJS = $(SRCS:%.c=%.o)
 NAME = push_swap
 

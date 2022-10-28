@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:44:46 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/27 21:41:16 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/28 18:18:59 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,45 +69,88 @@ void	leave_elements(t_stack *stack, int quaternary, int index, int type)
 	}
 }
 
+void	move_cross_sub(t_lst *lst[5], int quate[2], bool *is_esc, int data[2])
+{
+	lst[BEFORE] = lst[MAIN]->next;
+	perform_task(pb, lst[MAIN], lst[SUB], data[TYPE]);
+	if (is_correspond(lst[MAIN]->next->num, quate[0], data[INDEX]))
+		return (perform_task(rb, lst[MAIN], lst[SUB], data[TYPE]));
+	if (is_correspond(lst[MAIN]->next->num, quate[1], data[INDEX]))
+		return (perform_task(rb, lst[MAIN], lst[SUB], data[TYPE]));
+	if (lst[MAIN]->next == lst[FIRST] || lst[LAST] == lst[BEFORE])
+		return (perform_task(rb, lst[MAIN], lst[SUB], data[TYPE]));
+	if (lst[MAIN]->next == lst[LAST])
+		*is_esc = true;
+	perform_task(rr, lst[MAIN], lst[SUB], data[TYPE]);
+}
+
 void	move_cross(t_stack *stack, int quaternary[2], int index, int type)
 {
-	t_lst	*main;
-	t_lst	*sub;
-	t_lst	*last;
-	t_lst	*first;
-	t_lst	*before;
+	t_lst	*lst[5];
 	bool	is_escape;
+	int		data[2];
 
-	main = set_lst(stack, stack->a, type);
-	sub = set_lst(stack, stack->b, type);
-	first = main->next;
-	last = main->prev;
+	lst[MAIN] = set_lst(stack, stack->a, type);
+	lst[SUB] = set_lst(stack, stack->b, type);
+	lst[FIRST] = lst[MAIN]->next;
+	lst[LAST] = lst[MAIN]->prev;
+	data[INDEX] = index;
+	data[TYPE] = type;
 	is_escape = false;
 	while (1)
 	{
-		if (is_correspond(main->next->num, quaternary[0], index))
-			perform_task(pb, main, sub, type);
-		else if (is_correspond(main->next->num, quaternary[1], index))
-		{
-			before = main->next;
-			perform_task(pb, main, sub, type);
-			if (!is_correspond(main->next->num, quaternary[0], index) && !is_correspond(main->next->num, quaternary[1], index) && main->next != first && last != before)
-			{
-				if (main->next == last)
-					is_escape = true;
-					perform_task(rr, main, sub, type);
-			}
-			else
-				perform_task(rb, main, sub, type);
-		}
+		if (is_correspond(lst[MAIN]->next->num, quaternary[0], index))
+			perform_task(pb, lst[MAIN], lst[SUB], type);
+		else if (is_correspond(lst[MAIN]->next->num, quaternary[1], index))
+			move_cross_sub(lst, quaternary, &is_escape, data);
 		else
-			perform_task(ra, main, sub, type);
-		if (is_escape || main == main->next)
+			perform_task(ra, lst[MAIN], lst[SUB], type);
+		if (is_escape || lst[MAIN] == lst[MAIN]->next)
 			break ;
-		if (main->next == last)
+		if (lst[MAIN]->next == lst[LAST])
 			is_escape = true;
 	}
 }
+
+// void	move_cross(t_stack *stack, int quaternary[2], int index, int type)
+// {
+// 	t_lst	*main;
+// 	t_lst	*sub;
+// 	t_lst	*last;
+// 	t_lst	*first;
+// 	t_lst	*before;
+// 	bool	is_escape;
+
+// 	main = set_lst(stack, stack->a, type);
+// 	sub = set_lst(stack, stack->b, type);
+// 	first = main->next;
+// 	last = main->prev;
+// 	is_escape = false;
+// 	while (1)
+// 	{
+// 		if (is_correspond(main->next->num, quaternary[0], index))
+// 			perform_task(pb, main, sub, type);
+// 		else if (is_correspond(main->next->num, quaternary[1], index))
+// 		{
+// 			before = main->next;
+// 			perform_task(pb, main, sub, type);
+// 			if (!is_correspond(main->next->num, quaternary[0], index) && !is_correspond(main->next->num, quaternary[1], index) && main->next != first && last != before)
+// 			{
+// 				if (main->next == last)
+// 					is_escape = true;
+// 				perform_task(rr, main, sub, type);
+// 			}
+// 			else
+// 				perform_task(rb, main, sub, type);
+// 		}
+// 		else
+// 			perform_task(ra, main, sub, type);
+// 		if (is_escape || main == main->next)
+// 			break ;
+// 		if (main->next == last)
+// 			is_escape = true;
+// 	}
+// }
 
 void	move_cross_back(t_stack *stack, int quaternary, int index, int type)
 {
@@ -167,122 +210,62 @@ void	first_divide_into_four(t_stack *stack)
 	quaternary[0] = 01;
 	quaternary[1] = 00;
 	move_cross(stack, quaternary, index, ATOB);
-	// print_stack(stack);
 	transfer_elements(stack, 10, index, ATOB);
-	// print_stack(stack);
 }
 
-int	cnt_sort(t_vars *vars)
+int	power(int x, int exp)
 {
-	int	cnt;
-	int	size;
-
-	size = vars->size;
-	size /= 2;
-	cnt = 0;
-	while (size > 0)
-	{
-		size /= 2;
-		cnt++;
-	}
-	return (cnt);
+	while (--exp)
+		x *= 2;
+	return (x);
 }
 
-int	power(int cnt_of_sort)
+int	cntsort(int size)
 {
-	int	ret;
+	int	exp;
 
-	ret = 1;
-	while (cnt_of_sort > 0)
+	exp = 0;
+	while (1)
 	{
-		ret *= 2;
-		cnt_of_sort--;
+		exp++;
+		if (power(2, exp) < size && size <= power(2, exp + 1))
+			break ;
 	}
-	return (ret);
+	return (exp);
+}
+
+void	sort_by_binary(t_stack *stack, int index)
+{
+	transfer_elements(stack, 00, index, ATOB);
+	transfer_elements(stack, 01, index, BTOA);
 }
 
 void	sort(t_stack *stack, t_vars *vars)
 {
 	int	index;
 	int	quaternary[2];
-	int	cnt_of_sort;
-	
+	int	i;
+	int	exp;
+
 	index = 0;
-	// cnt_of_sort = cnt_sort(vars);
-	// printf("cnt_of_sort %d\n", cnt_of_sort);
-	// printf("max size %d\n", power(cnt_of_sort));
-	// printf("amari %d\n", vars->size % power(cnt_of_sort));
+	i = 0;
+	exp = cntsort(vars->size);
 	first_divide_into_four(stack);
-	index += 2;
-	leave_elements(stack, 11, index, ATOB);
-	// print_stack(stack);
-	quaternary[0] = 11;
-	quaternary[1] = 01;
-	move_cross(stack, quaternary, index, BTOA);
-	// print_stack(stack);
-	transfer_elements(stack, 10, index, BTOA);
-	// print_stack(stack);
-	move_cross_back(stack, 01, index, ATOB);
-
-	index += 2;
-	leave_elements(stack, 11, index, ATOB);
-	// print_stack(stack);
-	quaternary[0] = 11;
-	quaternary[1] = 01;
-	move_cross(stack, quaternary, index, BTOA);
-	// print_stack(stack);
-	transfer_elements(stack, 10, index, BTOA);
-	// print_stack(stack);
-	move_cross_back(stack, 01, index, ATOB);
-	index += 2;
-	leave_elements(stack, 11, index, ATOB);
-	// print_stack(stack);
-	quaternary[0] = 11;
-	quaternary[1] = 01;
-	move_cross(stack, quaternary, index, BTOA);
-	// print_stack(stack);
-	transfer_elements(stack, 10, index, BTOA);
-	// print_stack(stack);
-	move_cross_back(stack, 01, index, ATOB);
-	index += 2;
-	transfer_elements(stack, 00, index, ATOB);
-	transfer_elements(stack, 01, index, BTOA);
-
-
-	
-	// index += 2;
-	// leave_elements(stack, 11, index, ATOB);
-	// print_stack(stack);
-	// quaternary[0] = 11;
-	// quaternary[1] = 01;
-	// move_cross(stack, quaternary, index, BTOA);
-	// print_stack(stack);
-	// transfer_elements(stack, 10, index, BTOA);
-	// print_stack(stack);
-	// move_cross_back(stack, 01, index, ATOB);
-	// index += 2;
-	// leave_elements(stack, 11, index, ATOB);
-	// print_stack(stack);
-	// quaternary[0] = 11;
-	// quaternary[1] = 01;
-	// move_cross(stack, quaternary, index, BTOA);
-	// print_stack(stack);
-	// transfer_elements(stack, 10, index, BTOA);
-	// print_stack(stack);
-	// move_cross_back(stack, 01, index, ATOB);
+	while (i < (exp - 1) / 2)
+	{
+		index += 2;
+		leave_elements(stack, 11, index, ATOB);
+		quaternary[0] = 11;
+		quaternary[1] = 01;
+		move_cross(stack, quaternary, index, BTOA);
+		transfer_elements(stack, 10, index, BTOA);
+		move_cross_back(stack, 01, index, ATOB);
+		i++;
+	}
+	if (exp % 2 == 0)
+		sort_by_binary(stack, index + 2);
 	move_all(stack, BTOA);
-	// print_stack(stack);
-	// leave_elements(stack, 11, index, ATOB);
-	// print_stack(stack);
-	// ft_printf("stack a : ");
-	// show_list(stack->a);
-	// ft_printf("stack b : ");
-	// show_list(stack->b);
-	(void) vars;
 }
-
-
-
 
 /*
 		2
