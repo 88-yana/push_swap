@@ -23,10 +23,10 @@ int	main(int argc, char **argv)
 	check_sorted(&vars);
 	shrink_array(&vars);
 	stack = make_list(&vars);
-	// if (vars.size < 6)
-	// 	simple_sort(stack, &vars);
+	if (vars.size < 6)
+		simple_sort(stack, &vars);
 	sort(stack, &vars);
-	show_list(stack->a);
+	// show_list(stack->a);
 	// show_list_r(stack->a);
 	// greedy(stack);
 	// show_list(stack->a);

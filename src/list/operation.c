@@ -69,6 +69,8 @@ void	perform_task(t_task task, t_lst *a, t_lst *b)
 		ft_printf("ra\n");
 	if (task == rb)
 		ft_printf("rb\n");
+	if (task == rra)
+		ft_printf("rra\n");
 	if (task == sa || task == sb || task == ss)
 		perform_swap(task, a, b);
 	if (task == pa || task == pb)
