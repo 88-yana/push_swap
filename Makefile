@@ -8,7 +8,6 @@ NAME = push_swap
 
 all: $(NAME)
 
-
 $(NAME): $(OBJS)
 	$(MAKE) -C libft/
 	$(CC) $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
