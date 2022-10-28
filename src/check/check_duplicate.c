@@ -6,13 +6,13 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:21:42 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 21:11:59 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:01:29 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/check.h"
 
-static bool	is_match(t_vars *vars, long long an_element, long long i)
+static bool	is_match(t_vars *vars, int an_element, int i)
 {
 	i++;
 	while (i < vars->size)
@@ -26,7 +26,7 @@ static bool	is_match(t_vars *vars, long long an_element, long long i)
 
 void	check_duplicate(t_vars *vars)
 {
-	long long	i;
+	int	i;
 
 	i = 0;
 	while (i < vars->size)

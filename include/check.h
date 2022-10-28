@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 21:20:42 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 22:52:40 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 17:03:47 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "struct.h"
 
 void	print_error(char *message);
-void	check_arg(long long argc, char **argv);
+void	check_arg(int argc, char **argv);
 void	check_duplicate(t_vars *vars);
 void	check_sorted(t_vars *vars);
 void	malloc_error(void);

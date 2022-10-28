@@ -6,15 +6,15 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:59:56 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 21:13:49 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:02:25 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/shrink.h"
 
-static void	swap(long long pos, long long next, t_vars *vars)
+static void	swap(int pos, int next, t_vars *vars)
 {
-	long long	temp;
+	int	temp;
 
 	temp = vars->twin[pos];
 	vars->twin[pos] = vars->twin[next];
@@ -23,8 +23,8 @@ static void	swap(long long pos, long long next, t_vars *vars)
 
 static void	bubble_sort(t_vars *vars)
 {
-	long long	i;
-	long long	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < vars->size)
@@ -40,9 +40,9 @@ static void	bubble_sort(t_vars *vars)
 	}
 }
 
-static void	overwrite_elements(t_vars *vars, long long an_element, long long pos)
+static void	overwrite_elements(t_vars *vars, int an_element, int pos)
 {
-	long long	index;
+	int	index;
 
 	index = 0;
 	while (index < vars->size)
@@ -55,7 +55,7 @@ static void	overwrite_elements(t_vars *vars, long long an_element, long long pos
 
 static void	update_elements(t_vars *vars)
 {
-	long long	pos;
+	int	pos;
 
 	pos = 0;
 	while (pos < vars->size)
@@ -70,7 +70,7 @@ void	shrink_array(t_vars *vars)
 	bubble_sort(vars);
 	update_elements(vars);
 	free(vars->twin);
-	// long long i = 0;
+	// int i = 0;
 	// while (i < vars->size)
 	// {
 	// 	ft_printf("%d ", vars->twin[i]);

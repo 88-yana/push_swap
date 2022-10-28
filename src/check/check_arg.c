@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:19:11 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/20 21:11:39 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:01:14 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static bool	is_number(char *str)
 
 static bool	is_int(char *str)
 {
-	long long	ans;
-	long long	sign;
+	int	ans;
+	int	sign;
 
 	if (str == NULL)
 		return (false);
@@ -46,24 +46,24 @@ static bool	is_int(char *str)
 		sign = *str++ - 44;
 	while (ft_isdigit(*str))
 	{
-		if (sign * ans < (INT_MIN + (long long)(*str - '0')) / 10)
+		if (sign * ans < (INT_MIN + (int)(*str - '0')) / 10)
 		{
 			print_error("some arguments are smaller than an integers");
 			return (false);
 		}
-		if (sign * ans > (INT_MAX - (long long)(*str - '0')) / 10)
+		if (sign * ans > (INT_MAX - (int)(*str - '0')) / 10)
 		{
 			print_error("some arguments are bigger than an integers");
 			return (false);
 		}
-		ans = ans * 10 - (long long)(*str++ - '0');
+		ans = ans * 10 - (int)(*str++ - '0');
 	}
 	return (true);
 }
 
-void	check_arg(long long argc, char **argv)
+void	check_arg(int argc, char **argv)
 {
-	long long	i;
+	int	i;
 
 	if (argc == 1)
 		exit (1);
