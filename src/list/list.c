@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:21:01 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/25 13:01:48 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/04 08:58:53 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	show_list(t_lst *lst)
 	lst = lst->next;
 	while (lst != nil)
 	{
-		ft_putnbr_base(lst->num, "01");
+		ft_putnbr_base(lst->num, "0123456789");
 		ft_putchar(' ');
 		lst = lst->next;
 	}

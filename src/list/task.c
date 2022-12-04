@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:30:08 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/14 17:33:40 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:08:55 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	perform_p(t_lst *a, t_lst *b)
 {
 	t_lst	*temp;
 
+	if (lstlen(a) == 0)
+		return ;
 	temp = a->next;
 	a->next->next->prev = a;
 	a->next = a->next->next;
