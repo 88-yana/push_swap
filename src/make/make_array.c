@@ -17,6 +17,8 @@ void	make_array(t_vars *vars, int argc, char **argv)
 	int	i;
 
 	vars->size = argc - 1;
+	if (argc == 2)
+		;
 	vars->elements = malloc(sizeof(int) * (vars->size));
 	vars->twin = malloc(sizeof(int) * (vars->size));
 	if (vars->elements == NULL || vars->twin == NULL)
@@ -28,4 +30,5 @@ void	make_array(t_vars *vars, int argc, char **argv)
 		vars->twin[i - 1] = ft_atoi(argv[i]);
 		i++;
 	}
+	//freeする。
 }
