@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 21:59:03 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/28 18:27:18 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/04 08:50:45 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	transfer_elements(t_stack *stack, int quaternary, int index, int type);
 void	leave_elements(t_stack *stack, int quaternary, int index, int type);
 void	move_all(t_stack *stack, int type);
 int		cnt_sort(int size);
+
+void	simple_sort(t_stack *stack, t_vars *vars);
 
 # define MAIN 0
 # define SUB 1

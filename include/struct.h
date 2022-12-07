@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:00:14 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/25 17:04:12 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/04 12:24:16 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ typedef enum e_num {
 
 typedef struct s_vars
 {
-	int	*elements;
-	int	*twin;
-	int	size;
-	int			max_turn;
-	t_task		task[13];
-	t_task		task_sub[13];
+	int		*elements;
+	int		*twin;
+	int		size;
+	int		max_turn;
+	t_task	task[13];
+	t_task	task_sub[13];
 }	t_vars;
 
 typedef struct s_lst
