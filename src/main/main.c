@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	shrink_array(&vars);
 	stack = make_list(&vars);
 	if (vars.size < 6)
-		simple_sort(stack, &vars);
+		// simple_sort(stack, &vars);
 	sort(stack, &vars);
 	// show_list(stack->a);
 	// show_list_r(stack->a);
