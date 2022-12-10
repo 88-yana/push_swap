@@ -6,12 +6,11 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:19:11 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/11/10 20:21:58 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:47:31 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/check.h"
-#include "../../include/malloc.h"
 
 static bool	is_number(char *str)
 {
@@ -94,38 +93,3 @@ void	check_arg(int argc, char **argv)
 	if (array != NULL)
 		free_array_char(array);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	unsigned long	i;
-// 	char	yes[6][20] = {"123", "0", "2147483647", "-2147483648", "001", "+111"};
-// 	char	no[10][20] = {"123a", "2147483648",
-// 		"-2147483649", "akf", "11a11", "214748364719", "++123", "--123", "+-1", "-+1"};
-
-// 	i = 0;
-// 	while (i < sizeof(yes) / sizeof(yes[0]))
-// 	{
-// 		printf("[%s] is %s\n", yes[i], is_number(yes[i]) ? "num" : "no");
-// 		printf("[%s] is %s\n", yes[i], is_int(yes[i]) ? "int" : "no");
-// 		if (is_number(yes[i]) == true && is_int(yes[i]) == true)
-// 			printf("%s\n", "yes!");
-// 		else
-// 			printf("%s\n", "no!");
-// 		i++;
-// 	}
-// 	i = 0;
-// 	while (i < sizeof(no) / sizeof(no[0]))
-// 	{
-// 		printf("[%s] is %s\n", no[i], is_number(no[i]) ? "num" : "no");
-// 		printf("[%s] is %s\n", no[i], is_int(no[i]) ? "int" : "no");
-// 		if (is_number(no[i])  == true && is_int(no[i]) == true )
-// 			printf("%s\n", "yes!");
-// 		else
-// 			printf("%s\n", "no!");
-// 		i++;
-// 	}
-
-// 	return (0);
-// }

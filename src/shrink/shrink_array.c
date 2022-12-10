@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:59:56 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/25 13:02:25 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:46:26 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,4 @@ void	shrink_array(t_vars *vars)
 	bubble_sort(vars);
 	update_elements(vars);
 	free(vars->twin);
-	// int i = 0;
-	// while (i < vars->size)
-	// {
-	// 	ft_printf("%d ", vars->twin[i]);
-	// 	i++;
-	// }
-	// ft_printf("\n");
-	// i = 0;
-	// while (i < vars->size)
-	// {
-	// 	ft_printf("%d ", vars->elements[i]);
-	// 	i++;
-	// }
 }

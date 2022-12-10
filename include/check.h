@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 21:20:42 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/25 17:03:47 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:47:25 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "../libft/libft.h"
 # include "../libft/ft_printf/ft_printf.h"
 # include "struct.h"
+# include "malloc.h"
 
 void	print_error(char *message);
 void	check_arg(int argc, char **argv);

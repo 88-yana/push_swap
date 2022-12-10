@@ -6,19 +6,11 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:44:46 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/28 18:27:30 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:45:55 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/sort.h"
-
-// void	print_stack(t_stack *stack)
-// {
-// 	ft_printf("stack a : ");
-// 	show_list(stack->a);
-// 	ft_printf("stack b : ");
-// 	show_list(stack->b);
-// }
 
 void	first_divide_into_four(t_stack *stack)
 {

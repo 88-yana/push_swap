@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:21:42 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/10/25 13:01:29 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:49:40 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	check_duplicate(t_vars *vars)
 		if (is_match(vars, vars->elements[i], i))
 		{
 			print_error("some arguments are duplicated");
-			// system("leaks -q push_swap");
 			exit (1);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 19:01:45 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/12/04 09:35:06 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:48:02 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,5 @@ void	make_array(t_vars *vars, int argc, char **argv)
 	else
 		insert_elements(vars, argv, 1);
 	if (array != NULL)
-	free_array_char(array);
-	//freeする。
+		free_array_char(array);
 }
