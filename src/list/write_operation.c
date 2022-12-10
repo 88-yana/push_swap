@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:25:32 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/12/04 10:35:04 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:52:58 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,3 @@ void	write_operation(t_task task, int type)
 		task = change_write_task(task);
 	print_operation(task);
 }
-
-// int	main(void)
-// {
-// 	write_operation(sa, ATOB);
-// 	write_operation(sa, BTOA);
-// 	write_operation(sa, NOWRITE);
-// 	write_operation(pa, ATOB);
-// 	write_operation(pa, BTOA);
-// 	write_operation(pa, NOWRITE);
-// }
