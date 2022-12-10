@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 16:19:11 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/12/11 08:47:31 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:58:56 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ static void	is_valid_number(char **array, int i)
 
 void	check_arg(int argc, char **argv)
 {
-	int		i;
 	char	**array;
 
 	array = NULL;
