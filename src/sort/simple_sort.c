@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:26:15 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/12/04 12:45:04 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 08:24:58 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ static void	update_operations(t_vars *vars, int turn)
 static void	greedy(t_stack *stack, t_vars *vars, t_task prev_task, int turn)
 {
 	t_task	task;
-	size_t	prev_len;
+	int		prev_a;
+	int		prev_b;
 
 	if (turn >= vars->max_turn)
 		return ;
@@ -91,9 +92,10 @@ static void	greedy(t_stack *stack, t_vars *vars, t_task prev_task, int turn)
 	{
 		if (prev_task == reverse_task(task))
 			continue ;
-		prev_len = lstlen(stack->a);
+		prev_a = stack->a->next->num;
+		prev_b = stack->b->next->num;
 		perform_task(task, stack->a, stack->b, NOWRITE);
-		if ((task == pa || task == pb) && prev_len == lstlen(stack->a))
+		if (prev_a == stack->a->next->num && prev_b == stack->b->next->num)
 			continue ;
 		vars->task_sub[turn] = task;
 		greedy(stack, vars, task, turn + 1);
