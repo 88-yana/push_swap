@@ -17,4 +17,5 @@
 # include "check.h"
 
 void	make_array(t_vars *vars, int argc, char **argv);
+void	free_array_char(char **array);
 #endif

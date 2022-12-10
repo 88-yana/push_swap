@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../include/check.h"
+#include "../../include/malloc.h"
 
 static bool	is_number(char *str)
 {
@@ -61,21 +62,37 @@ static bool	is_int(char *str)
 	return (true);
 }
 
-void	check_arg(int argc, char **argv)
+static void	is_valid_number(char **array, int i)
 {
-	int	i;
-
-	if (argc == 1)
-		exit (1);
-	i = 1;
-	while (argv[i])
+	while (array[i])
 	{
-		if (is_number(argv[i]) == false)
+		if (is_number(array[i]) == false)
 			exit (1);
-		if (is_int(argv[i]) == false)
+		if (is_int(array[i]) == false)
 			exit (1);
 		i++;
 	}
+}
+
+void	check_arg(int argc, char **argv)
+{
+	int		i;
+	char	**array;
+
+	array = NULL;
+	if (argc == 1)
+		exit (1);
+	if (argc == 2)
+	{
+		array = ft_split(argv[1], ' ');
+		if (array == NULL)
+			malloc_error();
+		is_valid_number(array, 0);
+	}
+	else
+		is_valid_number(argv, 1);
+	if (array != NULL)
+		free_array_char(array);
 }
 
 // #include <stdio.h>
