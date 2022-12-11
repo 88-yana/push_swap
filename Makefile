@@ -26,8 +26,8 @@ NAME = push_swap
 all: $(OBJSDIR) $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C libft/
-	$(CC) $(OBJS) libft/libft.a -o $(NAME)
+	$(MAKE) -C $(LIBFTDIR)
+	$(CC) $(OBJS) $(LIBFTDIR)/libft.a -o $(NAME)
 
 $(OBJSDIR):
 	mkdir $(shell find $(SRCSDIR) -type d | sed 's/^$(SRCSDIR)/$(OBJSDIR)/g')
