@@ -23,7 +23,7 @@ $(NAME): $(OBJS)
 	ar r $(NAME) $(OBJS)
 
 clean:
-	$(MAKE) clean -C $(PRINTFDIR)
+	$(MAKE) fclean -C $(PRINTFDIR)
 	$(RM) $(OBJS)
 
 fclean: clean
