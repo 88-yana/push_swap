@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:23:22 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/12/04 10:35:16 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 09:07:16 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,4 @@ void	show_list(t_lst *lst);
 void	show_list_r(t_lst *lst);
 int		lstlen(t_lst *lst);
 void	write_operation(t_task task, int type);
-// int		lstlen(t_lst *lst);
-// void	lstclear(t_lst **lst, t_lst *nil);
 #endif

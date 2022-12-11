@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Werror -Wextra 
 SRCS = $(shell find . -type f -name *.c)
 OBJS = $(SRCS:%.c=%.o)
 NAME = push_swap
