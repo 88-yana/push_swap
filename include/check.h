@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 21:20:42 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/12/11 08:47:25 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 09:12:24 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	check_duplicate(t_vars *vars);
 void	check_sorted(t_vars *vars);
 void	malloc_error(void);
 bool	is_sorted(t_lst *lst);
-// bool	is_sorted(t_lst *lst);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: hyanagim <hyanagim@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 21:00:14 by hyanagim          #+#    #+#             */
-/*   Updated: 2022/12/04 12:24:16 by hyanagim         ###   ########.fr       */
+/*   Updated: 2022/12/11 09:11:45 by hyanagim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_vars
 
 typedef struct s_lst
 {
-	int		num;
+	int				num;
 	struct s_lst	*prev;
 	struct s_lst	*next;
 }	t_lst;
